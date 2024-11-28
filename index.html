@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Doctors in India</title>
+    <style>
+        /* Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Search Bar */
+        .search-container {
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-container input:focus {
+            border-color: #00796b;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Doctor Card */
+        .doctor-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor-card h2 {
+            margin: 0;
+            color: #00796b;
+            font-size: 1.5rem;
+        }
+
+        .doctor-card p {
+            margin: 8px 0;
+        }
+
+        .expertise {
+            color: #e57373;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>List of Doctors in India</h1>
+    <p>Find doctors and their areas of expertise across India</p>
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" onkeyup="searchDoctors()" placeholder="Search for doctors by name or specialization...">
+</div>
+
+<div class="container" id="doctorList">
+    <div class="doctor-card">
+        <h2>Dr. Rajesh Sharma</h2>
+        <p><strong>Specialization:</strong> Cardiology</p>
+        <p><strong>Location:</strong> New Delhi, India</p>
+        <p><span class="expertise">Expertise:</span> Heart surgery, Coronary artery bypass</p>
+    </div>
+
+    <div class="doctor-card">
+        <h2>Dr. Priya Kumar</h2>
+        <p><strong>Specialization:</strong> Dermatology</p>
+        <p><strong>Location:</strong> Mumbai, India</p>
+        <p><span class="expertise">Expertise:</span> Acne treatment, Skin cancer</p>
+    </div>
+
+    <div class="doctor-card">
+        <h2>Dr. Anil Verma</h2>
+        <p><strong>Specialization:</strong> Orthopedics</p>
+        <p><strong>Location:</strong> Bengaluru, India</p>
+        <p><span class="expertise">Expertise:</span> Joint replacement, Sports injuries</p>
+    </div>
+
+    <div class="doctor-card">
+        <h2>Dr. Sunita Reddy</h2>
+        <p><strong>Specialization:</strong> Neurology</p>
+        <p><strong>Location:</strong> Hyderabad, India</p>
+        <p><span class="expertise">Expertise:</span> Brain surgery, Epilepsy treatment</p>
+    </div>
+
+    <div class="doctor-card">
+        <h2>Dr. Amit Singh</h2>
+        <p><strong>Specialization:</strong> Pediatrics</p>
+        <p><strong>Location:</strong> Chennai, India</p>
+        <p><span class="expertise">Expertise:</span> Child health, Immunizations</p>
+    </div>
+</div>
+
+<script>
+    function searchDoctors() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const doctorCards = document.querySelectorAll(".doctor-card");
+
+        doctorCards.forEach(card => {
+            const name = card.querySelector("h2").textContent.toLowerCase();
+            const specialization = card.querySelector("p").textContent.toLowerCase();
+            if (name.includes(input) || specialization.includes(input)) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
